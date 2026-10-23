@@ -1,0 +1,17 @@
+{
+  "name": "kimo-alexa",
+  "version": "0.1.0",
+  "description": "Self-hosted MCP server (2025-11-25, Streamable HTTP) that puts the kimo video engine behind Alexa+",
+  "main": "src/server.mjs",
+  "scripts": {
+    "start": "node src/server.mjs",
+    "footage": "sh footage/make.sh"
+  },
+  "author": "Naman Sharma",
+  "license": "MIT",
+  "dependencies": {
+    "@modelcontextprotocol/sdk": "^1.32.1",
+    "zod": "^4.6.7"
+  },
+  "type": "module"
+}

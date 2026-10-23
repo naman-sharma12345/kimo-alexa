@@ -1,0 +1,8 @@
+node_modules/
+data/
+bin/kimo-mcp
+footage/trip/*.mp4
+video/
+voice/
+devpost/
+*.log

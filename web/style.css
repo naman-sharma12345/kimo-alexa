@@ -1,0 +1,63 @@
+:root { --bg:#05070d; --panel:#0c111c; --line:#1b2433; --txt:#e8eef8; --dim:#8090a8; --blue:#1fb6ff; --cyan:#4ef0ff; --ok:#3ddc97; }
+* { box-sizing:border-box; }
+html,body { margin:0; height:100%; background:radial-gradient(1200px 700px at 15% 30%, #0b1a33 0%, var(--bg) 60%); color:var(--txt); font:16px/1.45 Inter, "Noto Sans", system-ui, sans-serif; overflow:hidden; }
+header { height:72px; display:flex; align-items:center; justify-content:space-between; padding:0 40px; border-bottom:1px solid var(--line); }
+.brand { font-size:24px; font-weight:700; letter-spacing:.2px; display:flex; align-items:center; gap:10px; }
+.brand em { font-style:normal; font-weight:500; font-size:13px; color:var(--dim); border:1px solid var(--line); padding:2px 8px; border-radius:20px; }
+.brand .x { color:var(--dim); font-weight:400; }
+.brand .dot { width:14px; height:14px; border-radius:50%; background:var(--blue); box-shadow:0 0 14px var(--blue); }
+.conn { font:13px/1.3 "JetBrains Mono", "Noto Sans Mono", monospace; color:var(--dim); }
+.conn b { color:var(--ok); font-weight:600; }
+main { display:grid; grid-template-columns: 520px 560px 1fr; gap:28px; padding:28px 40px; height:calc(100% - 72px); }
+section { min-height:0; }
+.left { display:flex; flex-direction:column; gap:20px; }
+.device { display:flex; flex-direction:column; align-items:center; gap:16px; padding:18px 0 4px; }
+.ring { width:190px; height:190px; border-radius:50%; position:relative; display:grid; place-items:center; }
+.ring::before { content:""; position:absolute; inset:0; border-radius:50%; padding:9px; background:conic-gradient(from 0deg, #0a3d66, #0a3d66); -webkit-mask:linear-gradient(#000 0 0) content-box, linear-gradient(#000 0 0); -webkit-mask-composite:xor; mask-composite:exclude; transition:filter .3s; }
+.ring .core { width:150px; height:150px; border-radius:50%; background:radial-gradient(circle at 50% 35%, #1a2233, #090c14 70%); box-shadow: inset 0 4px 18px #000; }
+.ring.listening::before { background:conic-gradient(from var(--a,0deg), #0b4f8a, var(--cyan), var(--blue), #0b4f8a 60%, var(--cyan), #0b4f8a); filter:drop-shadow(0 0 22px var(--blue)); animation:spin 1.6s linear infinite; }
+.ring.thinking::before { background:conic-gradient(from var(--a,0deg), #0a3d66 0 55%, var(--cyan) 75%, var(--blue) 85%, #0a3d66 100%); filter:drop-shadow(0 0 16px var(--blue)); animation:spin .9s linear infinite; }
+.ring.speaking::before { background:conic-gradient(var(--blue), var(--cyan), var(--blue)); filter:drop-shadow(0 0 28px var(--cyan)); animation:pulse .7s ease-in-out infinite alternate; }
+@property --a { syntax:"<angle>"; initial-value:0deg; inherits:false; }
+@keyframes spin { to { --a:360deg; } }
+@keyframes pulse { from { filter:drop-shadow(0 0 10px var(--blue)); opacity:.75; } to { filter:drop-shadow(0 0 34px var(--cyan)); opacity:1; } }
+.state { color:var(--dim); font-size:15px; height:20px; }
+.chat { flex:1; overflow:auto; display:flex; flex-direction:column; gap:14px; padding-right:6px; }
+.msg { padding:14px 18px; border-radius:16px; max-width:92%; font-size:19px; }
+.msg.user { align-self:flex-end; background:#16223a; border:1px solid #213252; }
+.msg.user::before { content:"You"; display:block; font-size:12px; color:var(--dim); margin-bottom:4px; }
+.msg.alexa { align-self:flex-start; background:linear-gradient(135deg, #0d3b66, #0a2a4a); border:1px solid #1e5a90; }
+.msg.alexa::before { content:"Alexa"; display:block; font-size:12px; color:#8fd3ff; margin-bottom:4px; }
+form { display:flex; gap:10px; }
+form input { flex:1; background:var(--panel); border:1px solid var(--line); color:var(--txt); border-radius:12px; padding:12px 14px; font-size:15px; }
+form button { width:48px; border-radius:12px; border:1px solid var(--line); background:var(--panel); color:var(--txt); font-size:18px; }
+.mid { background:var(--panel); border:1px solid var(--line); border-radius:18px; padding:20px 22px; display:flex; flex-direction:column; }
+h2 { margin:0 0 14px; font-size:18px; font-weight:650; }
+h2 .sub { display:block; font:12px "JetBrains Mono", "Noto Sans Mono", monospace; color:var(--dim); font-weight:400; margin-top:4px; }
+.calls { list-style:none; margin:0; padding:0; overflow:auto; flex:1; display:flex; flex-direction:column; gap:10px; }
+.call { border:1px solid var(--line); border-radius:12px; padding:10px 14px; background:#0a0e17; animation:in .25s ease-out; }
+@keyframes in { from { opacity:0; transform:translateY(6px); } }
+.call .top { display:flex; justify-content:space-between; align-items:center; font:600 16px "JetBrains Mono", "Noto Sans Mono", monospace; }
+.call .name { color:var(--cyan); }
+.call .st { font-size:14px; color:var(--dim); }
+.call.done .st { color:var(--ok); }
+.call.err .st { color:#ff6b6b; }
+.call .args, .call .res { font:12.5px/1.4 "JetBrains Mono", "Noto Sans Mono", monospace; color:#a9b6cc; margin-top:5px; word-break:break-all; }
+.call .res { color:#7fe0b4; }
+.call.scene { border:none; background:none; padding:2px 0 0; font:12px "JetBrains Mono", monospace; color:var(--dim); }
+.right { display:flex; flex-direction:column; gap:18px; align-items:center; }
+.tv { width:100%; display:flex; flex-direction:column; align-items:center; margin-top:10px; }
+.screen { width:100%; aspect-ratio:16/9; background:#000; border:12px solid #15181f; border-radius:14px; position:relative; overflow:hidden; box-shadow:0 30px 80px #000a, 0 0 0 1px #262b36; }
+.stand { width:220px; height:30px; background:linear-gradient(#1a1d24,#0d0f14); clip-path:polygon(20% 0,80% 0,100% 100%,0 100%); }
+.screen video { width:100%; height:100%; display:none; object-fit:contain; background:#000; }
+.screen.on video { display:block; }
+.screen.on .tvidle { display:none; }
+.tvidle { position:absolute; inset:0; display:grid; place-content:center; text-align:center; background:radial-gradient(circle at 50% 40%, #0d1830, #000 70%); }
+.tvlogo { font-size:30px; font-weight:700; color:#cfd8e8; }
+.tvsub { color:var(--dim); margin-top:6px; }
+.badge { position:absolute; top:14px; left:14px; background:#000a; color:#fff; padding:5px 10px; border-radius:8px; font-size:13px; display:none; }
+.screen.on .badge { display:block; }
+.proj { width:100%; font:13px/1.6 "JetBrains Mono", "Noto Sans Mono", monospace; color:var(--dim); background:var(--panel); border:1px solid var(--line); border-radius:14px; padding:14px 18px; min-height:90px; }
+.proj b { color:var(--txt); font-weight:600; }
+::-webkit-scrollbar { width:0; height:0; display:none; }
+* { scrollbar-width:none; }

@@ -1,0 +1,44 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>Alexa+ (simulated) × kimo</title>
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+<header>
+  <div class="brand"><span class="dot"></span> Alexa+ <em>simulated</em> <span class="x">×</span> kimo</div>
+  <div class="conn" id="conn">connecting to MCP server…</div>
+</header>
+<main>
+  <section class="left">
+    <div class="device">
+      <div class="ring idle" id="ring"><div class="core"></div></div>
+      <div class="state" id="state">Say “Alexa, …”</div>
+    </div>
+    <div class="chat" id="chat"></div>
+    <form id="form" autocomplete="off">
+      <input id="say" placeholder="Type what you'd say to Alexa…">
+      <button type="submit" aria-label="speak">🎙</button>
+    </form>
+  </section>
+  <section class="mid">
+    <h2>MCP tool calls <span class="sub">tools/call → kimo-alexa → kimo</span></h2>
+    <ol class="calls" id="calls"></ol>
+  </section>
+  <section class="right">
+    <div class="tv">
+      <div class="screen" id="screen">
+        <div class="tvidle" id="tvidle"><div class="tvlogo">Living Room TV</div><div class="tvsub">waiting for Alexa</div></div>
+        <video id="video" playsinline></video>
+        <div class="badge" id="tvbadge"></div>
+      </div>
+      <div class="stand"></div>
+    </div>
+    <div class="proj" id="proj"></div>
+  </section>
+</main>
+<script type="module" src="app.js"></script>
+</body>
+</html>
